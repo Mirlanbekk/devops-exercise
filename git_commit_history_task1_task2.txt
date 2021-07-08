@@ -1,0 +1,23 @@
+commit 40a513c714ce0e0826e1ad66bfea3d1cfdc64a76
+Author: mir <pirmatov@gmail.com>
+Date:   Wed Jul 7 22:30:37 2021 -0700
+
+     service to run my-container accessible on port 3000
+
+commit 3abb64b4a13cb0eb8b419be33e59a6cdc52b9bfa
+Author: mir <pirmatov@gmail.com>
+Date:   Wed Jul 7 22:27:11 2021 -0700
+
+     npm script for image building
+
+commit 985012b57f0eef32e474935cc332d4fb906690b0
+Author: mir <pirmatov@gmail.com>
+Date:   Wed Jul 7 22:23:29 2021 -0700
+
+     nodejs application
+
+commit bda30899d0a63ccd2ca962eb68a9b7f7c454f271
+Author: Mirlanbek Umaraliev <67178255+Mirlanbekk@users.noreply.github.com>
+Date:   Wed Jul 7 22:19:22 2021 -0700
+
+    Initial commit
