@@ -1,0 +1,24 @@
+mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ git log
+commit c8d8b3ee8541361192ec2d13c8387e654719e821 (HEAD -> main, origin/main, origin/HEAD)
+Author: mir <pirmatov@gmail.com>
+Date:   Wed Jul 7 22:43:14 2021 -0700
+
+     Kubernetes definitions files for service
+
+commit d4609a047100f7d701ae52d14289d7b3a87b3955
+Author: mir <pirmatov@gmail.com>
+Date:   Wed Jul 7 22:41:42 2021 -0700
+
+     Kubernetes definitions files for HorizontalPodAutoscaler
+
+commit a5bd5c9dcdc7c1dc5e255b51042b7ad60a79c68e
+Author: mir <pirmatov@gmail.com>
+Date:   Wed Jul 7 22:39:04 2021 -0700
+
+     Kubernetes definitions files for deployment
+
+commit bda30899d0a63ccd2ca962eb68a9b7f7c454f271
+Author: Mirlanbek Umaraliev <67178255+Mirlanbekk@users.noreply.github.com>
+Date:   Wed Jul 7 22:19:22 2021 -0700
+
+    Initial commit     
