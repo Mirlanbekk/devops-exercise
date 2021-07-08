@@ -1,0 +1,7 @@
+version: '3'
+services:
+   web:
+       image: mirlanbek/nodejsapp:v1
+       container_name: my-container
+       ports:
+         - '3000:3000'
