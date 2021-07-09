@@ -1,0 +1,67 @@
+1) i builded docker container tagged mirlanapp:v1
+
+mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ docker build -t mirlanapp:v1 .
+Sending build context to Docker daemon  140.8kB
+Step 1/7 : FROM node:14
+ ---> 29aef864d313
+Step 2/7 : WORKDIR /usr/app
+ ---> Using cache
+ ---> f656ac7d4494
+Step 3/7 : COPY package*.json ./
+ ---> Using cache
+ ---> 39070b772fd2
+Step 4/7 : RUN npm install
+ ---> Using cache
+ ---> 09b4508a88fe
+Step 5/7 : COPY . .
+ ---> 035ef5930519
+Step 6/7 : EXPOSE 3000
+ ---> Running in dc9bd2cb9ed6
+Removing intermediate container dc9bd2cb9ed6
+ ---> e7b06868db0d
+Step 7/7 : CMD [ "npm", "start" ]
+ ---> Running in 42a09c3b1358
+Removing intermediate container 42a09c3b1358
+ ---> c9352a0f09e6
+Successfully built c9352a0f09e6
+Successfully tagged mirlanapp:v1
+
+
+2) i run docker container
+
+ mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ docker run -d -p 3000:3000 mirlanapp:v1
+0db70b5833caf01f96ee8f5e64a794cfc819fc1c536cd03b161595ec226317d7
+
+mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ curl localhost:3000
+{"hello":"World"}
+
+3: i push docker image to my public docker hub repo.
+
+mirlanbek/nodejsapp
+
+4. 
+i created deployment and autoscaler and service with minikube and tested. 
+
+mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ sudo kubectl create -f deployment.yaml 
+deployment.apps/my-app created
+mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ sudo kubectl get deployment
+NAME     READY   UP-TO-DATE   AVAILABLE   AGE
+my-app   1/1     1            1           23s
+
+
+mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ sudo kubectl create -f horizontal-pod-auto.yaml 
+horizontalpodautoscaler.autoscaling/my-app created
+mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ sudo kubectl get HorizontalPodAutoscaler
+NAME     REFERENCE           TARGETS         MINPODS   MAXPODS   REPLICAS   AGE
+my-app   Deployment/my-app   <unknown>/50%   2         10        2          92s
+
+
+
+mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ sudo kubectl get svc
+NAME         TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
+kubernetes   ClusterIP      10.96.0.1      <none>         443/TCP          2m32s
+my-service   LoadBalancer   10.98.238.73   10.98.238.73   3000:30588/TCP   77s
+
+
+mir@mir-inspiron245459:~/devops-MFGX/devops-exercise/devops-exercise$ curl localhost:3000
+{"hello":"World"}
